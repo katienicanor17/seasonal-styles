@@ -35,14 +35,21 @@
 	display:inline-block;
 	margin-left:5%;
     }
-    
-    li.seasons a {
-        /*color:red; */
+    /*
+
+    div#myDiv{
+    background-color: yellow;
     }
-    #instuctions{
-        margin-left: 3.5em;
+    */
+    div#myOtherDiv p{
+        /*background-color: yellow;*/
     }
-    
+
+    div#yetAnotherDiv li:nth-child(even){
+        /*background-color: yellow;*/
+    }
+
+
 
 
   </style>
@@ -73,17 +80,26 @@
             <li>Winter: <b>#005393</b></li>
         </ul>
     </p>
-    <p>
-        Using jQuery, this web page promotes a unique look and feel for each of the four seasons by changing the single page in the 4 following areas:
-       <div id="instuctions">
+    <div id="myDiv">This is inside a div with an id of myDiv</div>
+    <div id="myOtherDiv">
+        <p>I'm in a p tag</p>
+        <p>I'm in a p tag</p>
+        <p>I'm in a p tag</p>
+        <p>I'm in a p tag</p>
+        <p>I'm in a p tag</p>
+    </div>
+
+    <div id="yetAnotherDiv">
         <ul>
-            <li>A unique color scheme</li>
-            <li>A unique logo</li>
-            <li>A unique item of clothing</li>
-            <li>A unique string of text identifying the season</li>
+            <li>I am a list item</li>
+            <li>I am a list item</li>
+            <li>I am a list item</li>
+            <li>I am a list item</li>
         </ul>
-       </div>
-        
+    </div>
+
+    <p>
+    Aesthetic gentrify YOLO McSweeney's typewriter single-origin coffee. Slow-carb hella listicle lomo, Helvetica single-origin coffee butcher stumptown. Chambray try-hard church-key mumblecore, tote bag PBR cardigan. Retro Austin Brooklyn, blog Intelligentsia gentrify jean shorts sartorial bicycle rights gastropub. Aesthetic wayfarers Pitchfork, tattooed Carles quinoa meh leggings distillery pork belly banjo. Umami cred lumbersexual skateboard, pork belly Tumblr vegan letterpress. Fixie bicycle rights butcher chillwave, gluten-free health goth Echo Park locavore whatever.
     <img src="images/300x400.png" alt="Season Wear Goes Here" id="wear" />
     </p>
     <p>
@@ -97,7 +113,7 @@
     </p>
     <footer>
     <p><small>&copy; 2021 by 
-        Katie Nicanor, All Rights Reserved ~ 
+        YOUR NAME HERE, All Rights Reserved ~ 
         <a id="html-checker" href="#">Check HTML</a> ~ 
         <a id="css-checker" href="#">Check CSS</a></small>
     </p>
@@ -105,54 +121,39 @@
   </main>
   <script src="js/main.js"></script>
   <script>
-    /*
-    Change the src of the img with an id of logo
-    Change the src of the img with an id of wear
+      document.querySelector("div#myDiv").style.backgroundColor = "blue";
+      document.querySelector("div#myDiv").innerHTML= "Here is some new text"
 
-        Spring: #2B7129
-        Summer: #EBA52B
-        Fall: #A81124
-        Winter: #005393
-
-    */
       $("document").ready(function(){
-         $("li.seasons a").click(function(e){
-             e.preventDefault();
+         // alert("I'm still jQuery!");
 
-             let season = $(this).attr("href");
+         let $theDiv = $("div#mydiv");
 
-             if(season == "Spring"){
-                $("#logo").attr("src","images/spring.gif");
-                $("#wear").attr("src","images/spring-wear.jpg");
-                $("html").css("background-color", "#2B7129");
-                $("h3").text("Out with the Old in with the New! Get ready for Spring time!!");
-             }
-             if(season == "Summer"){
-                $("#logo").attr("src","images/summer.gif");
-                $("#wear").attr("src","images/summer-wear.jpg");
-                $("html").css("background-color", "#EBA52B");
-                $("h3").text("It's Summer Time!");
-             }
-             if(season == "Fall"){
-                $("#logo").attr("src","images/fall.gif");
-                $("#wear").attr("src","images/fall-wear.jpg");
-                $("html").css("background-color", "#A81124");
-                $("h3").text("Leap into our Fall Wardrobe");
-             }
-             if(season == "Winter"){
-                $("#logo").attr("src","images/winter.gif");
-                $("#wear").attr("src","images/winter-wear.jpg");
-                $("html").css("background-color", "#005393");
-                $("h3").text("Feel Cool with your New Wardrobe!");
-             }
-             if(season == "Default"){
-                $("#logo").attr("src","images/four-seasons.gif");
-                $("#wear").attr("src","images/300x400.png");
-                $("html").css("background-color", "#ccc");
-                $("h3").text("Outfitter for All Seasons!");
-             }
+         $("div#myDiv")
+         .css("background-color","orange")
+         .css("border", "1px solid black")
+         .append(" Here's some additional text")
+         .fadeOut(3000);
+
+         let counter = 0;
+
+         $("div#myOtherDiv p").each(function(){
+             counter++;
+             $(this).prepend(counter + " - ");
+
          });
-     });
+         $("div#yetAnotherDiv li:nth-child(even)").css("background-color","blue");
+         $("div#yetAnotherDiv li").hide();
+         $("div#yetAnotherDiv").hide()
+         .fadeIn(3000,function(){
+             $("div#yetAnotherDiv li").each(function(){
+                 $(this).slideDown(2000);
+
+             });
+         });
+
+      });
+
   </script>
   </body>
 </html>
